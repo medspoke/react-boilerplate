@@ -1,0 +1,89 @@
+{
+  "name": "medspoke-boilerplate",
+  "version": "0.1.0",
+  "description": "Boilerplate Code",
+  "main": "index.js",
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": "^4.0.0"
+  },
+  "scripts": {
+    "build": "webpack -p --bail",
+    "build:staging": "better-npm-run build:staging",
+    "build:production": "better-npm-run build:production",
+    "start": "cp ./src/index.html ./build/index.html; webpack-dev-server --progress --colors --hot --content-base build",
+    "dev": "npm start",
+    "test": "echo \"Error: no tests setup currently\" && exit 0",
+    "storybook": "start-storybook -p 9001",
+    "lint": "eslint src common_modules",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "betterScripts": {
+    "build:staging": {
+      "command": "npm run build",
+      "env": {
+        "NODE_ENV": "staging"
+      }
+    },
+    "build:production": {
+      "command": "npm run build",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  },
+  "author": "MedSpoke, Inc.",
+  "license": "",
+  "devDependencies": {
+    "@kadira/storybook": "^2.1.1",
+    "autoprefixer-loader": "^3.2.0",
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-register": "^6.7.2",
+    "babel-resolver": "0.0.18",
+    "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "^0.23.1",
+    "eslint-config-rallycoding": "^3.1.0",
+    "eslint-plugin-react": "^6.7.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "ignore-styles": "^4.0.0",
+    "node-sass": "^3.4.2",
+    "react-addons-css-transition-group": "~15.3.0",
+    "react-dnd-test-backend": "^1.0.2",
+    "react-hot-loader": "^1.3.0",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "^2.12.2",
+    "webpack-s3-plugin": "git://github.com/trbritt/s3-plugin-webpack.git"
+  },
+  "dependencies": {
+    "accounting": "^0.4.1",
+    "axios": "~0.15.2",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-react-optimize": "^1.0.1",
+    "babel-preset-stage-1": "^6.16.0",
+    "better-npm-run": "0.0.13",
+    "bluebird": "~3.4.1",
+    "chart.js": "^1.1.1",
+    "classnames": "~2.2.5",
+    "cssnano": "^3.9.1",
+    "little-loader": "^0.2.0",
+    "lodash": "~4.15.0",
+    "moment": "~2.14.1",
+    "normalize.css": "^5.0.0",
+    "react": "^15.4.1",
+    "react-addons-shallow-compare": "^15.4.1",
+    "react-datepicker": "~0.28.2",
+    "react-dom": "^15.4.1",
+    "react-redux": "~4.4.5",
+    "react-router": "~2.6.1",
+    "redux": "~3.5.2",
+    "redux-thunk": "~2.1.0"
+  }
+}

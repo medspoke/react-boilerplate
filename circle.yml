@@ -1,0 +1,28 @@
+machine:
+  timezone: America/Chicago
+
+  node:
+    version: 6.4.0
+
+dependencies:
+  cache_directories:
+    - sassc
+    - libsass
+  pre:
+    - if [[ ! -e sassc ]]; then git clone git@github.com:sass/sassc.git sassc; fi
+    - if [[ ! -e libsass ]]; then git clone --recursive git@github.com:sass/libsass.git && cd sassc && export SASS_LIBSASS_PATH=$(readlink -f ../libsass) && make && cd ..; fi
+    - ln -s sassc/bin/sassc ~/bin/sassc
+    - npm install -g npm@4.0.5
+  post:
+
+deployment:
+  staging:
+    branch: develop
+    commands:
+      - npm rebuild node-sass
+      - npm run build
+  production:
+    branch: master
+    commands:
+      - npm rebuild node-sass
+      - npm run build
